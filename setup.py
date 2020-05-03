@@ -1,11 +1,20 @@
 import setuptools
+from setuptools.command.sdist import sdist
 
 with open("README.md", "r") as fh:
     long_description = fh.read()
 
+
+class Sdist(sdist):
+
+    def run(self):
+        self.run_command('compile_catalog')
+        sdist.run(self)
+
+
 setuptools.setup(
     name="osiris",
-    version="0.0.2",
+    version="0.0.5",
     author="David Veiga",
     author_email="david@david.blog.br",
     description="Validators for field",
