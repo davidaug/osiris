@@ -15,7 +15,7 @@ pip install osiris
 ### Usage
 The parameter *validation_exceptions* in **APIManager.create_api()**  from Flask-restless must be set to use osiris' **ValidationException**.
 
-```
+```python
 from osiris.exceptions import ValidationException
 
 [...]
@@ -31,7 +31,7 @@ See about in: https://flask-restless.readthedocs.io/en/stable/customizing.html#c
 
 
 The parameter "field" is required and you could set a custom message.
-```
+```python
 from sqlalchemy.orm import validates
 from osiris.string import *
 from osiris.internet import valid_email
