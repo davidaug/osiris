@@ -14,17 +14,17 @@ class Sdist(sdist):
 
 setuptools.setup(
     name="osiris",
-    version="0.0.5",
+    version="0.1.0",
     author="David Veiga",
     author_email="david@david.blog.br",
-    description="Validators for field",
+    description="Validators for fields in Flask-Restless",
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/davidaug/osiris",
     packages=setuptools.find_packages(),
     classifiers=[
         "Programming Language :: Python :: 3",
-        "License :: OSI Approved :: MIT License",
+        "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
         "Operating System :: OS Independent",
     ],
     python_requires='>=3.6',
