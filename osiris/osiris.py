@@ -1,5 +1,6 @@
 from osiris import _
 
+
 def osiris_validator(decorator):
 
     def maker(*args, **kwargs):

@@ -1,12 +1,12 @@
 import unittest
-from osiris.internet import *
+from osiris.internet import valid_email, ValidationException
 
 
 class TestInternet(unittest.TestCase):
 
     def test_email_blank_email(self):
         @valid_email(field='field')
-        def validation(obj,key,field_value):
+        def validation(obj, key, field_value):
             return field_value
         value = ''
         self.assertRaises(ValidationException, validation, None, 1, value)

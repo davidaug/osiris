@@ -1,7 +1,6 @@
 from osiris import _
 from osiris.osiris import osiris_validator
 from osiris.exceptions import ValidationException
-import re
 
 
 @osiris_validator

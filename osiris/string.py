@@ -33,6 +33,7 @@ def not_blank(func, *args, **kwargs):
 
     return wrapper
 
+
 @osiris_validator
 def is_alpha(func, *args, **kwargs):
     message = _('{0} must contain only letters.'.format(kwargs['field']))
@@ -55,12 +56,13 @@ def is_alpha_space(func, *args, **kwargs):
         message = kwargs['message']
 
     def wrapper(obj, arg1, arg2):
-        if not arg2.replace(" ","").isalpha():
+        if not arg2.replace(" ", "").isalpha():
             raise ValidationException(kwargs['field'], message)
         else:
             return func(obj, arg1, arg2)
 
     return wrapper
+
 
 @osiris_validator
 def is_alnum(func, *args, **kwargs):
@@ -84,7 +86,7 @@ def is_alnum_space(func, *args, **kwargs):
         message = kwargs['message']
 
     def wrapper(obj, arg1, arg2):
-        if not arg2.replace(" ","").isalnum():
+        if not arg2.replace(" ", "").isalnum():
             raise ValidationException(kwargs['field'], message)
         else:
             return func(obj, arg1, arg2)

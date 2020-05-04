@@ -1,5 +1,7 @@
 import unittest
-from osiris.string import *
+from osiris.string import ValidationException
+from osiris.string import not_blank, not_empty, is_digit, is_alnum, is_alnum_space
+from osiris.string import is_alpha, is_alpha_space, match_regex, string_len
 
 
 class TestString(unittest.TestCase):

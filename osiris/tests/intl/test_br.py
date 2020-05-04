@@ -1,5 +1,5 @@
 import unittest
-from osiris.intl.br import *
+from osiris.intl.br import valid_cpf, valid_cep, valid_cnpj, ValidationException
 
 
 class TestBR(unittest.TestCase):
