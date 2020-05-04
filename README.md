@@ -30,7 +30,7 @@ To use the decorators, the **validates()** decorator from SQLAlchemy must be use
 See about in: https://flask-restless.readthedocs.io/en/stable/customizing.html#capturing-validation-errors
 
 
-The parameter "field" is required and you could set a custom message.
+The parameter "field" is required and you can set a custom message.
 ```python
 from sqlalchemy.orm import validates
 from osiris.string import *
