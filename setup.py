@@ -13,7 +13,7 @@ class Sdist(sdist):
 
 
 setuptools.setup(
-    name="osirisvalidation",
+    name="osirisvalidator",
     version="0.1.0",
     author="David Veiga",
     author_email="david@david.blog.br",

@@ -1,5 +1,5 @@
 import unittest
-from osiris.number import min_max, ValidationException
+from osirisvalidator.number import min_max, ValidationException
 
 
 class TestNumber(unittest.TestCase):

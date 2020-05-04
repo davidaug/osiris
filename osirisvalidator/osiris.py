@@ -1,4 +1,4 @@
-from osiris import _
+from osirisvalidator import _
 
 
 def osiris_validator(decorator):

@@ -1,6 +1,6 @@
-# OSIRIS
+# OSIRIS VALIDATOR
 
-Osiris is a set of decorators for validation in Flask-restless and SQLAlchemy
+Osiris Validator is a set of decorators for validation in Flask-restless and SQLAlchemy
 
 (Readme is under construction...)
 
@@ -9,14 +9,14 @@ Osiris is a set of decorators for validation in Flask-restless and SQLAlchemy
 ### Installing
 
 ```
-pip install osiris
+pip install osirisvalidator
 ```
 
 ### Usage
 The parameter *validation_exceptions* in **APIManager.create_api()**  from Flask-restless must be set to use osiris' **ValidationException**.
 
 ```python
-from osiris.exceptions import ValidationException
+from osirisvalidator.exceptions import ValidationException
 
 [...]
 
@@ -33,8 +33,8 @@ See about in: https://flask-restless.readthedocs.io/en/stable/customizing.html#c
 The parameter "field" is required and you can set a custom message.
 ```python
 from sqlalchemy.orm import validates
-from osiris.string import *
-from osiris.internet import valid_email
+from osirisvalidator.string import *
+from osirisvalidator.internet import valid_email
 
 class Usuario(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -58,7 +58,7 @@ class Usuario(db.Model):
 
 ## List of validators
 
-### osiris.string
+### osirisvalidator.string
 - not_empty
 - not_blank
 - is_alpha
@@ -69,10 +69,10 @@ class Usuario(db.Model):
 - string_len (mandatory parameters: **min** and **max**)
 - match_regex (mandatory parameter: **regex**) 
 
-### osiris.number
+### osirisvalidator.number
 - min_max (mandatory parameters: **min** and **max**)
 
-### osiris.internet
+### osirisvalidator.internet
 - valid_email
 
 ## osiris.intl.br

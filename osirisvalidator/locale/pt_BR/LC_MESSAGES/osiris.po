@@ -1,11 +1,11 @@
-# Portuguese (Brazil) translations for osiris.
+# Portuguese (Brazil) translations for osirisvalidator.
 # Copyright (C) 2020 David Veiga
-# This file is distributed under the same license as the osiris project.
+# This file is distributed under the same license as the osirisvalidator project.
 # FIRST AUTHOR david@david.blog.br, 2020.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: osiris 0.0.2\n"
+"Project-Id-Version: osirisvalidator 0.0.2\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2020-05-03 21:34-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"

@@ -1,5 +1,5 @@
 import unittest
-from osiris.internet import valid_email, ValidationException
+from osirisvalidator.internet import valid_email, ValidationException
 
 
 class TestInternet(unittest.TestCase):
