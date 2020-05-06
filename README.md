@@ -1,6 +1,6 @@
 # OSIRIS VALIDATOR
 
-Osiris Validator is a set of decorators for validation in Flask-restless and SQLAlchemy
+Osiris Validator is a set of decorators for validation with SQLAlchemy
 
 (Readme is under construction...)
 
@@ -13,30 +13,16 @@ pip install osirisvalidator
 ```
 
 ### Usage
-The parameter *validation_exceptions* in **APIManager.create_api()**  from Flask-restless must be set to use osiris' **ValidationException**.
-
-```python
-from osirisvalidator.exceptions import ValidationException
-
-[...]
-
-manager = APIManager(app, flask_sqlalchemy_db=db)
-manager.create_api(User, validation_exceptions=[ValidationException], methods=['GET', 'POST'])
-```
 
 To use the decorators, the **validates()** decorator from SQLAlchemy must be used before, and the pattern must be followed.
 
-
-See about in: https://flask-restless.readthedocs.io/en/stable/customizing.html#capturing-validation-errors
-
-
-The parameter "field" is required and you can set a custom message.
+The parameter "field" is mandatory and you can set a custom message.
 ```python
 from sqlalchemy.orm import validates
 from osirisvalidator.string import *
 from osirisvalidator.internet import valid_email
 
-class Usuario(db.Model):
+class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(200), nullable=False)
     email = db.Column(db.String(60), nullable=False)
@@ -55,6 +41,40 @@ class Usuario(db.Model):
         return email
 
 ``` 
+When a validation error occurs, a **ValidationException** is thrown.
+
+#### Flask example
+
+```python
+@app.route('/saveuser', methods=['POST'])
+def saveuser():
+    try:
+        user = User()
+        user.name = request.form['name']
+        user.email = request.form['email']
+        db.session.add(user)
+        db.session.commit()
+    except ValidationException as ve:
+        flash(ve.errors)
+        return redirect(url_for('newuser'))
+
+    return redirect(url_for('index'))
+```
+
+
+#### Flask-restless example
+The parameter *validation_exceptions* in **APIManager.create_api()**  from Flask-restless must be set to use osiris' **ValidationException**.
+
+```python
+from osirisvalidator.exceptions import ValidationException
+
+[...]
+
+manager = APIManager(app, flask_sqlalchemy_db=db)
+manager.create_api(User, validation_exceptions=[ValidationException], methods=['GET', 'POST'])
+```
+
+See about in: https://flask-restless.readthedocs.io/en/stable/customizing.html#capturing-validation-errors
 
 ## List of validators
 
