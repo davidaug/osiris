@@ -10,6 +10,12 @@ def valid_cpf(func, *args, **kwargs):
         message = kwargs['message']
 
     def wrapper(obj, arg1, arg2):
+        if arg2 is None:
+            return func(obj, arg1, arg2)
+
+        if not isinstance(arg2, str):
+            raise ValidationException(kwargs['field'], message)
+
         if not arg2.isdigit():
             raise ValidationException(kwargs['field'], message)
 
@@ -41,6 +47,12 @@ def valid_cnpj(func, *args, **kwargs):
         message = kwargs['message']
 
     def wrapper(obj, arg1, arg2):
+        if arg2 is None:
+            return func(obj, arg1, arg2)
+
+        if not isinstance(arg2, str):
+            raise ValidationException(kwargs['field'], message)
+
         if not arg2.isdigit():
             raise ValidationException(kwargs['field'], message)
 
@@ -72,6 +84,12 @@ def valid_cep(func, *args, **kwargs):
         message = kwargs['message']
 
     def wrapper(obj, arg1, arg2):
+        if arg2 is None:
+            return func(obj, arg1, arg2)
+
+        if not isinstance(arg2, str):
+            raise ValidationException(kwargs['field'], message)
+
         if not arg2.isdigit():
             raise ValidationException(kwargs['field'], message)
 

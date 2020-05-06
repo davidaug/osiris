@@ -41,10 +41,15 @@ def is_alpha(func, *args, **kwargs):
         message = kwargs['message']
 
     def wrapper(obj, arg1, arg2):
-        if not arg2.isalpha():
-            raise ValidationException(kwargs['field'], message)
-        else:
-            return func(obj, arg1, arg2)
+        if arg2 is not None:
+
+            if not isinstance(arg2, str):
+                raise ValidationException(kwargs['field'], message)
+
+            if not arg2.isalpha():
+                raise ValidationException(kwargs['field'], message)
+
+        return func(obj, arg1, arg2)
 
     return wrapper
 
@@ -56,10 +61,15 @@ def is_alpha_space(func, *args, **kwargs):
         message = kwargs['message']
 
     def wrapper(obj, arg1, arg2):
-        if not arg2.replace(" ", "").isalpha():
-            raise ValidationException(kwargs['field'], message)
-        else:
-            return func(obj, arg1, arg2)
+        if arg2 is not None:
+
+            if not isinstance(arg2, str):
+                raise ValidationException(kwargs['field'], message)
+
+            if not arg2.replace(" ", "").isalpha():
+                raise ValidationException(kwargs['field'], message)
+
+        return func(obj, arg1, arg2)
 
     return wrapper
 
@@ -71,10 +81,15 @@ def is_alnum(func, *args, **kwargs):
         message = kwargs['message']
 
     def wrapper(obj, arg1, arg2):
-        if not arg2.isalnum():
-            raise ValidationException(kwargs['field'], message)
-        else:
-            return func(obj, arg1, arg2)
+        if arg2 is not None:
+
+            if not isinstance(arg2, str):
+                raise ValidationException(kwargs['field'], message)
+
+            if not arg2.isalnum():
+                raise ValidationException(kwargs['field'], message)
+
+        return func(obj, arg1, arg2)
 
     return wrapper
 
@@ -86,10 +101,15 @@ def is_alnum_space(func, *args, **kwargs):
         message = kwargs['message']
 
     def wrapper(obj, arg1, arg2):
-        if not arg2.replace(" ", "").isalnum():
-            raise ValidationException(kwargs['field'], message)
-        else:
-            return func(obj, arg1, arg2)
+        if arg2 is not None:
+
+            if not isinstance(arg2, str):
+                raise ValidationException(kwargs['field'], message)
+
+            if not arg2.replace(" ", "").isalnum():
+                raise ValidationException(kwargs['field'], message)
+
+        return func(obj, arg1, arg2)
 
     return wrapper
 
@@ -101,10 +121,15 @@ def is_digit(func, *args, **kwargs):
         message = kwargs['message']
 
     def wrapper(obj, arg1, arg2):
-        if not arg2.isdigit():
-            raise ValidationException(kwargs['field'], message)
-        else:
-            return func(obj, arg1, arg2)
+        if arg2 is not None:
+
+            if not isinstance(arg2, str):
+                raise ValidationException(kwargs['field'], message)
+
+            if not arg2.isdigit():
+                raise ValidationException(kwargs['field'], message)
+
+        return func(obj, arg1, arg2)
 
     return wrapper
 
@@ -123,8 +148,13 @@ def string_len(func, *args, **kwargs):
         message = kwargs['message']
 
     def wrapper(obj, arg1, arg2):
-        if len(arg2) < int(kwargs['min']) or len(arg2) > int(kwargs['max']):
-            raise ValidationException(kwargs['field'], message)
+        if arg2 is not None:
+
+            if not isinstance(arg2, str):
+                raise ValidationException(kwargs['field'], message)
+
+            if len(arg2) < int(kwargs['min']) or len(arg2) > int(kwargs['max']):
+                raise ValidationException(kwargs['field'], message)
 
         return func(obj, arg1, arg2)
 
@@ -141,8 +171,13 @@ def match_regex(func, *args, **kwargs):
         message = kwargs['message']
 
     def wrapper(obj, arg1, arg2):
-        if not re.match(kwargs['regex'], arg2):
-            raise ValidationException(kwargs['field'], message)
+        if arg2 is not None:
+
+            if not isinstance(arg2, str):
+                raise ValidationException(kwargs['field'], message)
+
+            if not re.match(kwargs['regex'], arg2):
+                raise ValidationException(kwargs['field'], message)
 
         return func(obj, arg1, arg2)
 

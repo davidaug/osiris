@@ -11,9 +11,14 @@ def valid_email(func, *args, **kwargs):
         message = kwargs['message']
 
     def wrapper(obj, arg1, arg2):
-        if not re.match(r"(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$)", arg2):
-            raise ValidationException(kwargs['field'], message)
-        else:
-            return func(obj, arg1, arg2)
+        if arg2 is not None:
+
+            if not isinstance(arg2, str):
+                raise ValidationException(kwargs['field'], message)
+
+            if not re.match(r"(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$)", arg2):
+                raise ValidationException(kwargs['field'], message)
+
+        return func(obj, arg1, arg2)
 
     return wrapper
