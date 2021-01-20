@@ -46,7 +46,7 @@ When a validation error occurs, a **ValidationException** is thrown.
 #### Flask example
 
 ```python
-@app.route('/saveuser', methods=['POST'])
+@app.route('api/User', methods=['POST'])
 def saveuser():
     try:
         user = User()
