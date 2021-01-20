@@ -45,6 +45,8 @@ When a validation error occurs, a **ValidationException** is thrown.
 
 #### Flask example
 
+Full example in: https://github.com/davidaug/osirisvalidator-flask-example
+
 ```python
 @app.route('api/User', methods=['POST'])
 def saveuser():
@@ -55,10 +57,9 @@ def saveuser():
         db.session.add(user)
         db.session.commit()
     except ValidationException as ve:
-        flash(ve.errors)
-        return redirect(url_for('newuser'))
+        return jsonify({"status": 400, "message": "Validation error!", "errors": ve.errors}), 400
 
-    return redirect(url_for('index'))
+    return jsonify(user)
 ```
 
 
@@ -91,6 +92,7 @@ See about in: https://flask-restless.readthedocs.io/en/stable/customizing.html#c
 
 ### osirisvalidator.number
 - min_max (mandatory parameters: **min** and **max**)
+- not_null
 
 ### osirisvalidator.internet
 - valid_email
